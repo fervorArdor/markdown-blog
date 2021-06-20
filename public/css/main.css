@@ -1,0 +1,24 @@
+.avatar{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.social-media-icon{
+    display: flex;
+    margin-left: -40px;
+}
+
+.social-media-icon li {
+    list-style: none;
+    padding-right: 20px;
+}
+
+.social-media-icon li a{
+    font-size: 20px;
+    color: black;
+}
+
+.new-article{
+    float: right;
+}

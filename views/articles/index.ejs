@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>All post | Bhavna Soni</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Blog Posts</h1>
+        <div class="media">
+            <img class="mr-3 avatar" src="/images/avatar.jpg" alt="Generic placeholder image">
+            <div class="media-body">
+                <a href="/articles/new" class="btn btn-success new-article">
+                    <i class="fas fa-plus"></i>  New Article
+                </a>
+              <h4 class="mt-0">Bhavna Soni</h4>
+              Simple and short blog posts on MERN stack.
+              <h6>Connect with me</h6>
+              <ul class='social-media-icon'>
+                    <li>
+                      <a href="https://github.com/fervorArdor"><i class="fab fa-github"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/bhavna-soni-5260011a7/"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/bhavna-soni-5260011a7/"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/bhavna-soni-5260011a7/"><i class="fas fa-envelope"></i></a>
+                    </li>
+              </ul>
+            </div>
+        </div>
+
+        <form action="/" method="POST" class="input-group mb-3">
+            <input type="text" name='search' id='search' class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+            </div>
+        </form>
+
+        <div class="tags">
+            <a href="/" class="btn btn-outline-primary">All</a>
+            <a href="/React" class="btn btn-outline-primary">React</a>
+            <a href="/NodeJS" class="btn btn-outline-primary">NodeJS</a>
+            <a href="/Javascript" class="btn btn-outline-primary">Javascript</a>
+            <a href="/HTML" class="btn btn-outline-primary">HTML</a>
+            <a href="/CSS" class="btn btn-outline-primary">CSS</a>
+            <a href="/Express" class="btn btn-outline-primary">Express</a>
+        </div>
+
+        <% articles.forEach(article => { %>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title"><%= article.title %></h4>
+                    <a href="#" class="badge badge-secondary mb-2"><%= article.tag %></a>
+                    <div class="card-subtitle mb-2" text-muted>
+                        <%= new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: '2-digit'}).format(article.createdAt) %>
+                    </div>
+                    <div class="card-text mb-2">
+                        <%= article.description %>
+                    </div>
+                    <a href="articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
+                    <a href="articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+                    <form class="d-inline" action="/articles/<%= article.id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger" type='submit'>Delete</button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
